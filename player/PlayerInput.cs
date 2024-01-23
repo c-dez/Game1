@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-   CharacterController playerInput;
+   CharacterController cc;
    private void Start()
    {
-    playerInput = GetComponent<CharacterController>();
+    cc = GetComponent<CharacterController>();
    }
 
    private void Update()
    {
-    
+    Vector3 playerInput = new Vector3(Input.GetAxis("Horizontal"),
+    0,Input.GetAxis("Vertical"));
+    Debug.Log(playerInput);
+
    }
 }
