@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
    CharacterController cc;
+   [SerializeField] private float moveSpeed;
    private void Start()
    {
     cc = GetComponent<CharacterController>();
@@ -15,7 +16,12 @@ public class PlayerInput : MonoBehaviour
    {
     Vector3 playerInput = new Vector3(Input.GetAxis("Horizontal"),
     0,Input.GetAxis("Vertical"));
-    Debug.Log(playerInput);
+
+    playerInput = Vector3.ClampMagnitude(playerInput, 1);
+    cc.Move(playerInput * moveSpeed * Time.deltaTime);
+    // Debug.Log(playerInput);
+    
+
 
    }
 }
